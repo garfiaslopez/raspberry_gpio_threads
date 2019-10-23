@@ -1,0 +1,63 @@
+#! /bin/sh
+# /etc/init.d/myappd
+#
+### BEGIN INIT INFO
+# Provides:          myappd
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: myapp do some thing
+# Description:       bla bla
+### END INIT INFO
+
+# Do not forget assign execute privilage to this
+# script by typing: sudo chmod 755 /etc/init.d/myappd
+# Also do the same to "myapp" by typing:
+# sudo chmod 755 /home/pi/myapp 
+
+# Then you need to add the appropriate symbolic links to 
+# cause the script to be executed when the system goes down, 
+# or comes up.The simplest way of doing this is to use the 
+# Debian-specific command update-rc.d :
+# pi@navio-rpi:~# update-rc.d myappd defaults
+
+# If you wish to remove the script from the startup sequence
+# in the future run:
+# pi@navio-rpi:~# update-rc.d -f myappd remove
+
+# Then delete /etc/init.d/myappd script by type:
+# sudo rm /etc/init.d/myappd
+
+# Reference:
+# http://www.debian-administration.org/article/28/Making_scripts_run_at_boot_time_with_Debian
+
+# ---- Start script procedure ----
+
+# Some things that run always (example)
+# sudo /home/pi/myapp &
+# pwd
+
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "Starting script myappd "
+    echo "Could do more here"
+    sudo /home/pi/myapp &
+    ;;
+  stop)
+    echo "Stopping script myappd"
+    echo "Could do more here"
+    sudo pkill myapp
+    ;;
+  *)
+    echo "Usage: /etc/init.d/myappd {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
+
+

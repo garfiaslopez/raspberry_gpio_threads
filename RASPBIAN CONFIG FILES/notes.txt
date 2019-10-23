@@ -1,0 +1,59 @@
+RASPBERRY NOTES 
+
+
+
+
+CONFIG.  On boot partition 
+
+SSH ENABLE
+Create ssh empty file on boot directory
+
+WIFI
+sudo nano wpa_supplicant.conf
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=MX
+
+network={
+    ssid="JOSEGARFIASMAC"
+    psk="0918273645"
+    key_mgmt=WPA-PSK
+}
+
+
+SHOW CONNECTED DEVICES arp -a    [BRIDGE]
+
+ssh pi@192.168.2.12
+raspberry
+
+g++ -pthread threads.cpp -o main -l bcm2835
+
+
+INSTALL BCM 2835
+
+wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.60.tar.gz
+tar zxvf bcm2835-1.60.tar.gz
+cd bcm2835-1.60
+./configure
+sudo make
+sudo make check
+sudo make install
+
+
+COMPILE PROGRAM WITH LIBRARY:
+g++ main.cpp -o main -l bcm2835
+./main
+
+
+
+TURN OFF 
+
+sudo shutdown -h now
+
+
+
+11 salida
+
+13 entrada
+
